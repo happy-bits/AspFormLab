@@ -90,14 +90,50 @@ public class DataService
                 CreatedDate = DateTime.Now.AddDays(-15),
                 User = _users[1],
                 Book = _books[1]
+            },
+            // New reviews for first book (Harry Potter)
+            new Review 
+            { 
+                Id = 3,
+                Content = "Perfect for young readers, magical storytelling",
+                Rating = 4,
+                CreatedDate = DateTime.Now.AddDays(-10),
+                User = _users[1],
+                Book = _books[0]
+            },
+            new Review 
+            { 
+                Id = 4,
+                Content = "A modern classic that started it all",
+                Rating = 5,
+                CreatedDate = DateTime.Now.AddDays(-5),
+                User = _users[0],
+                Book = _books[0]
+            },
+            // New review for second book (Game of Thrones)
+            new Review 
+            { 
+                Id = 5,
+                Content = "Complex and engaging, but not for the faint of heart",
+                Rating = 4,
+                CreatedDate = DateTime.Now.AddDays(-2),
+                User = _users[0],
+                Book = _books[1]
             }
         };
 
         // Add reviews to books and users
         _books[0].Reviews.Add(_reviews[0]);
+        _books[0].Reviews.Add(_reviews[2]); // Add new reviews to first book
+        _books[0].Reviews.Add(_reviews[3]);
         _books[1].Reviews.Add(_reviews[1]);
+        _books[1].Reviews.Add(_reviews[4]); // Add new review to second book
+
         _users[0].Reviews.Add(_reviews[0]);
+        _users[0].Reviews.Add(_reviews[3]); // Add new reviews to users
+        _users[0].Reviews.Add(_reviews[4]);
         _users[1].Reviews.Add(_reviews[1]);
+        _users[1].Reviews.Add(_reviews[2]);
     }
 
     // Get all authors

@@ -1,0 +1,18 @@
+@model WebApp.ViewModels.Group1Vm
+
+
+<form method="post" asp-action="Group1">
+
+    @for (var i = 0; i < Model.Books.Count(); i++)
+    {
+        <h2>@Model.Books[i].Title</h2>
+
+        @foreach (var review in Model.Books[i].Reviews)
+        {
+            <input type="checkbox" />
+            <p>@review.Id</p>
+        }
+    }
+
+    <input type="submit" value="Ok">
+</form>

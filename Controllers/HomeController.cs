@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using AspFormLab.Services;
 using AspFormLab.ViewModels;
+using WebApp.ViewModels;
 
 namespace AspFormLab.Controllers;
 
@@ -65,6 +66,12 @@ public class HomeController(DataService dataService) : Controller
     }
 
 
+    public IActionResult Group1()
+    {
+        var vm = new Group1Vm();
+        vm.Books = dataService.GetAllBooks().ToList();
+        return View(vm);
+    }
 
 
 }
