@@ -25,7 +25,7 @@
         <input type="checkbox" name="SelectedAuthorIds" value="200" />
     </label>
     <button type="submit">Submit</button>
-</form> 
+</form>
 
 
 <h1>Loopa</h1>
@@ -33,24 +33,41 @@
     @foreach (var author in Model.Authors)
     {
         <label> @author.Name
-           <input name="SelectedAuthorIds" type="checkbox" value="@author.Id" />
-       </label>
+            <input name="SelectedAuthorIds" type="checkbox" value="@author.Id" />
+        </label>
     }
     <button type="submit">Submit</button>
 </form>
 
 
-<h1>'asp-for' även på checkboxen</asp-for></h1>
+<h1>'asp-for' även på checkboxen</h1>
 @*Notera: en annan actionmetod*@
 <form asp-action="Check1_Alternative" asp-controller="Home" method="post">
-    @for (var i=0; i<Model.SelectedAuthors.Count(); i++)
+    @for (var i = 0; i < Model.SelectedAuthors.Count(); i++)
     {
         <label> @Model.SelectedAuthors[i].Name
-           <input type="checkbox" asp-for="SelectedAuthors[i].IsSelected" />
+            <input type="checkbox" asp-for="SelectedAuthors[i].IsSelected" />
             @*Notera: hidden-fältet (kan även skicka med namn om du vill)*@
 
-           <input type="hidden" asp-for="SelectedAuthors[i].Id" />
-       </label>
+            <input type="hidden" asp-for="SelectedAuthors[i].Id" />
+        </label>
     }
+    <button type="submit">Submit</button>
+</form>
+
+
+<h1>Multiselect</h1>
+<form asp-action="Check1" asp-controller="Home" method="post">
+
+    <select asp-for="SelectedAuthorIds" asp-items="Model.Authors.Select(a => 
+
+            new SelectListItem { 
+                Value = a.Id.ToString(), 
+                Text = a.Name 
+            })">
+
+        <option value="">Välj...</option>
+    </select>
+
     <button type="submit">Submit</button>
 </form>
