@@ -1,0 +1,55 @@
+@model AspFormLab.ViewModels.Form1Vm
+
+<style>
+
+</style>
+
+<h1>Ren klassisk HTML</h1>
+<form action="/Home/Form1" method="post">
+    <select name="SelectedAuthorId">
+        <option value="">Välj...</option>
+        <option value="100">Författare med id 100</option>
+        <option value="200">Författare med id 200</option>
+        <option value="300">Författare med id 300</option>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+<h1>Tag-helpers</h1>
+<form asp-action="Form1" asp-controller="Home" method="post">
+    <select asp-for="SelectedAuthorId">
+        <option value="">Välj...</option>
+        <option value="100">Författare med id 100</option>
+        <option value="200">Författare med id 200</option>
+        <option value="300">Författare med id 300</option>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+<h1>Loopa</h1>
+<form asp-action="Form1" asp-controller="Home" method="post">
+    <select asp-for="SelectedAuthorId">
+        <option value="">Välj...</option>
+        @foreach (var author in Model.Authors)
+        {
+            <option value="@author.Id">@author.Name</option>
+        }
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+
+
+
+<h1>SelectListItem</h1>
+<form asp-action="Form1" asp-controller="Home" method="post">
+    <select asp-for="SelectedAuthorId"
+        asp-items="Model.Authors.Select(a => new SelectListItem { Value = a.Id.ToString(), Text = a.Name })">
+        <option value="">Välj...</option>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
