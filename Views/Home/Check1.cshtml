@@ -1,0 +1,17 @@
+@model AspFormLab.ViewModels.Check1Vm
+
+
+<h1>Ren klassisk HTML</h1>
+<form action="/Home/Check1" method="post">
+
+    <label> Författare med id 100
+        <input type="checkbox" name="SelectedAuthorIds" value="100" />
+    </label>
+
+
+    <label> Författare med id 200
+        <input type="checkbox" name="SelectedAuthorIds" value="200" />
+    </label>
+
+    <button type="submit">Submit</button>
+</form>

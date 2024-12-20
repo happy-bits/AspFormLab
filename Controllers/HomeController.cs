@@ -32,9 +32,26 @@ public class HomeController(DataService dataService) : Controller
             "You selected author with id " + vm.SelectedAuthorId);
     }
 
-    public IActionResult Privacy()
+
+    public IActionResult Check1()
     {
-        return View();
+        var vm = new Check1Vm();
+        vm.Authors = dataService.GetAllAuthors();
+        return View(vm);
     }
+
+    [HttpPost]
+    public IActionResult Check1(Check1Vm vm)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest("Invalid model state");
+        }
+
+        return Ok("Selected author ids: " + string.Join(',', vm.SelectedAuthorIds));
+    }
+
+
+
 
 }
