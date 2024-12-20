@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using AspFormLab.Models;
 using AspFormLab.Services;
 using AspFormLab.ViewModels;
 
@@ -11,8 +9,6 @@ public class HomeController(DataService dataService) : Controller
 
     public IActionResult Index()
     {
-
-
         return View();
     }
 
