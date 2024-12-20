@@ -73,5 +73,16 @@ public class HomeController(DataService dataService) : Controller
         return View(vm);
     }
 
+    [HttpPost]
+    public IActionResult Group1(Group1Vm vm)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest("Invalid model state");
+        }
+
+        return Ok($"Selected review ids: {string.Join(", ", vm.SelectedReviewIds)}");
+    }
+
 
 }
