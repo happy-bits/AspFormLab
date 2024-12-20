@@ -12,15 +12,15 @@ public class HomeController(DataService dataService) : Controller
         return View();
     }
 
-    public IActionResult Form1()
+    public IActionResult Select1()
     {
-        var vm = new Form1Vm();
+        var vm = new Select1Vm();
         vm.Authors = dataService.GetAllAuthors();
         return View(vm);
     }
 
     [HttpPost]
-    public IActionResult Form1(Form1Vm vm)
+    public IActionResult Select1(Select1Vm vm)
     {
         if (!ModelState.IsValid)
         {
@@ -29,7 +29,7 @@ public class HomeController(DataService dataService) : Controller
 
         return Ok(vm.SelectedAuthorId == null
             ? "You didn't select any author" :
-            "You selected author with id= " + vm.SelectedAuthorId);
+            "You selected author with id " + vm.SelectedAuthorId);
     }
 
     public IActionResult Privacy()

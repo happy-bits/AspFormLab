@@ -1,8 +1,8 @@
-@model AspFormLab.ViewModels.Form1Vm
+@model AspFormLab.ViewModels.Select1Vm
 
 
 <h1>Ren klassisk HTML</h1>
-<form action="/Home/Form1" method="post">
+<form action="/Home/Select1" method="post">
     <select name="SelectedAuthorId">
         <option value="">Välj...</option>
         <option value="100">Författare med id 100</option>
@@ -18,7 +18,7 @@
 
 
 <h1>Tag-helpers</h1>
-<form asp-action="Form1" asp-controller="Home" method="post">
+<form asp-action="Select1" asp-controller="Home" method="post">
     <select asp-for="SelectedAuthorId">
         <option value="">Välj...</option>
         <option value="100">Författare med id 100</option>
@@ -35,7 +35,7 @@
 
 
 <h1>Loopa</h1>
-<form asp-action="Form1" asp-controller="Home" method="post">
+<form asp-action="Select1" asp-controller="Home" method="post">
     <select asp-for="SelectedAuthorId">
         <option value="">Välj...</option>
         @foreach (var author in Model.Authors)
@@ -53,7 +53,7 @@
 
 
 <h1>SelectListItem</h1>
-<form asp-action="Form1" asp-controller="Home" method="post">
+<form asp-action="Select1" asp-controller="Home" method="post">
     <select asp-for="SelectedAuthorId" asp-items="Model.Authors.Select(a => 
 
             new SelectListItem { 
