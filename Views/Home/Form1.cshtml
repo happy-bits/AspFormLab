@@ -1,8 +1,5 @@
 @model AspFormLab.ViewModels.Form1Vm
 
-<style>
-
-</style>
 
 <h1>Ren klassisk HTML</h1>
 <form action="/Home/Form1" method="post">
@@ -16,6 +13,10 @@
     <button type="submit">Submit</button>
 </form>
 
+
+
+
+
 <h1>Tag-helpers</h1>
 <form asp-action="Form1" asp-controller="Home" method="post">
     <select asp-for="SelectedAuthorId">
@@ -27,6 +28,11 @@
 
     <button type="submit">Submit</button>
 </form>
+
+
+
+
+
 
 <h1>Loopa</h1>
 <form asp-action="Form1" asp-controller="Home" method="post">
@@ -44,10 +50,17 @@
 
 
 
+
+
 <h1>SelectListItem</h1>
 <form asp-action="Form1" asp-controller="Home" method="post">
-    <select asp-for="SelectedAuthorId"
-        asp-items="Model.Authors.Select(a => new SelectListItem { Value = a.Id.ToString(), Text = a.Name })">
+    <select asp-for="SelectedAuthorId" asp-items="Model.Authors.Select(a => 
+
+            new SelectListItem { 
+                Value = a.Id.ToString(), 
+                Text = a.Name 
+            })">
+
         <option value="">Välj...</option>
     </select>
 
