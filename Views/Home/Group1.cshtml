@@ -9,13 +9,13 @@
 
         @foreach (var review in Model.Books[i].Reviews)
         {
-            <div class="form-check">
+            <label>
+
                 <input type="checkbox" 
                        name="SelectedReviewIds" 
                        value="@review.Id" 
                        class="form-check-input" />
-                <label class="form-check-label">@review.Id</label>
-            </div>
+                @review.Content</label>
         }
     }
 
