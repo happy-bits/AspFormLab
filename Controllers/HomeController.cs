@@ -37,6 +37,7 @@ public class HomeController(DataService dataService) : Controller
     {
         var vm = new Check1Vm();
         vm.Authors = dataService.GetAllAuthors();
+        vm.SelectedAuthors = vm.Authors.Select(a => new AuthorCheckboxVm { Id = a.Id, Name = a.Name, IsSelected = false }).ToList();
         return View(vm);
     }
 
@@ -49,6 +50,18 @@ public class HomeController(DataService dataService) : Controller
         }
 
         return Ok("Selected author ids: " + string.Join(',', vm.SelectedAuthorIds));
+    }
+
+
+    [HttpPost]
+    public IActionResult Check1_Alternative(Check1Vm vm)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest("Invalid model state");
+        }
+
+        return Ok("Selected author ids: " + string.Join(',', vm.SelectedAuthors.Where(a => a.IsSelected).Select(a => a.Id)));
     }
 
 
